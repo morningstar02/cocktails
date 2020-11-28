@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ImagePreviewComponent } from './_components/image-preview/image-preview.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ImagePreviewComponent } from './_components/image-preview/image-preview
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule,
+    MatButtonToggleModule
   ],
   entryComponents: [ImagePreviewComponent],
 

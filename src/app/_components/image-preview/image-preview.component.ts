@@ -12,9 +12,7 @@ export class ImagePreviewComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ImagePreviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      console.log(data);
       this.url = data.url;
-      console.log(this.url);
     }
 
 

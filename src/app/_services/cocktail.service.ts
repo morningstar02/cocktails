@@ -20,4 +20,14 @@ export class CocktailService {
       .pipe(map(data => data));
   }
 
+  filterByCategory(type: string) {
+    return this.http.get<any>(environment.base_url + `filter.php?c=${type}`)
+      .pipe(map(data => data));
+  }
+
+  filterByGlass(type: string) {
+    return this.http.get<any>(environment.base_url + `filter.php?g=${type}`)
+      .pipe(map(data => data));
+  }
+
 }
