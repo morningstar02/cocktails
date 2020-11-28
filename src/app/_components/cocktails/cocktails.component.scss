@@ -1,0 +1,26 @@
+.table-container {
+    position: relative;
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  .fixedElement {
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
