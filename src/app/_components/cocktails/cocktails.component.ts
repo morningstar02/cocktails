@@ -36,7 +36,7 @@ export class CocktailsComponent implements OnInit, AfterViewInit  {
 
   openDialog(url: string): void {
     const dialogRef = this.dialog.open(ImagePreviewComponent, {
-      width: '650px',
+      width: '480px',
       data: {url}
     });
 
