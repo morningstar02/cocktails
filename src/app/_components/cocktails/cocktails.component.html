@@ -2,7 +2,7 @@
 <div style="margin-left: 4px;margin-right: 4px; margin-bottom: 10px;">
   <br/>
   <mat-label>Filter by:</mat-label>
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value="Alcoholic">
       <mat-button-toggle (change)="fetchCocktails($event.value)" value="Alcoholic">Alcoholic</mat-button-toggle>
       <mat-button-toggle (change)="fetchCocktails($event.value)" value="Non_Alcoholic">Non-alcoholic</mat-button-toggle>
       <mat-button-toggle (change)="fetchCocktails($event.value)" value="Ordinary_Drink">Ordinary</mat-button-toggle>
