@@ -1,16 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit, Inject} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { CocktailService } from 'src/app/_services/cocktail.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ImagePreviewComponent } from '../image-preview/image-preview.component';
 
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
+export interface DialogData {
+  url: string;
 }
 
 export interface CocktailData {
@@ -18,17 +16,6 @@ export interface CocktailData {
   strDrink: string;
   strDrinkThumb: string;
 }
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
-
 
 @Component({
   selector: 'app-cocktails',
@@ -46,13 +33,25 @@ export class CocktailsComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private cocktailService: CocktailService) {
+  constructor(private cocktailService: CocktailService, public dialog: MatDialog) { }
 
+  openDialog(url: string): void {
+    const dialogRef = this.dialog.open(ImagePreviewComponent, {
+      width: '650px',
+      data: {url}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
-  ngOnInit(): void { }
+
+  ngOnInit(): void { 
+    this.getCocktails();
+  }
 
   ngAfterViewInit() {
-    this.getCocktails();
+
   }
 
   getCocktails() {
@@ -90,15 +89,3 @@ export class CocktailsComponent implements OnInit, AfterViewInit  {
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}

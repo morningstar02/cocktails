@@ -12,11 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ImagePreviewComponent } from './_components/image-preview/image-preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CocktailsComponent
+    CocktailsComponent,
+    ImagePreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,8 +31,10 @@ import {MatSortModule} from '@angular/material/sort';
     HttpClientModule, 
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
+  entryComponents: [ImagePreviewComponent],
 
   providers: [],
   bootstrap: [AppComponent]
